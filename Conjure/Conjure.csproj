@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SAO\**" />
+    <EmbeddedResource Remove="SAO\**" />
+    <None Remove="SAO\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="SAO.zip" />
   </ItemGroup>
 

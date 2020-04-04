@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Conjure": {
+      "commandName": "Project",
+      "commandLineArgs": "-set SAO -key d573464b1d85d65451bce4648fc548cf"
+    }
+  }
+}
