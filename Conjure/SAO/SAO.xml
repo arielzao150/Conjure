@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cockatrice_carddatabase version="3">
+  <sets>
+    <set>
+    <name>SAO</name>
+    <longname>SAO</longname>
+    </set>
+  </sets>
+  <cards>
+    <card>
+      <name>A HEROES</name>
+      <set picURL="/A HEROES.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Creature</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Kirito, The Black Swordsman</name>
+      <set picURL="/Kirito, The Black Swordsman.jpg">SAO</set>
+      <color>B</color>
+      <color>R</color>
+      <manacost>2BR</manacost>
+      <cmc>4</cmc>
+      <type>Legendary Creature — Human Warrior</type>
+      <pt>3/3</pt>
+      <tablerow>1</tablerow>
+      <text>Double Strike, menace.
+Partner with Asuna, The Flash.
+If you cast Asuna, The Flash this turn, Kirito, The Black Swordsman costs {2} less to cast.
+When Asuna, The Flash and Kirito, The Black Swordsman attacks your creatures get +1/+1 and opponents creatures get -1/-1 until end of turn. </text>
+    </card>
+    <card>
+      <name>Asuna, The Flash</name>
+      <set picURL="/Asuna, The Flash.jpg">SAO</set>
+      <color>W</color>
+      <color>R</color>
+      <manacost>2RW</manacost>
+      <cmc>4</cmc>
+      <type>Legendary Creature — Human Knight</type>
+      <pt>3/3</pt>
+      <tablerow>1</tablerow>
+      <text>First Strike, haste.
+Partner with Kirito, The Black Swordsman.
+If you cast Kirito, The Black Swordsman this turn, Asuna, The Flash costs {2} less to cast.
+Whenever a creature deals damage to Kirito, The Black Swordsman, Asuna, The Flash deals damage equal to its power to that creature. </text>
+    </card>
+    <card>
+      <name>Eugeo</name>
+      <set picURL="/Eugeo.jpg">SAO</set>
+      <color>W</color>
+      <manacost>4W</manacost>
+      <cmc>5</cmc>
+      <type>Legendary Creature — Warrior</type>
+      <pt>3/3</pt>
+      <tablerow>1</tablerow>
+      <text>When Eugeo enters the battlefield, exile target creature.
+When Eugeo dies, return the exiled creature to the battlefield under your control. </text>
+    </card>
+    <card>
+      <name>Klein</name>
+      <set picURL="/Klein.jpg">SAO</set>
+      <color>R</color>
+      <manacost>R</manacost>
+      <cmc>1</cmc>
+      <type>Legendary Creature — Human Warrior</type>
+      <pt>3/4</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Alice Synthesis Thirty</name>
+      <set picURL="/Alice Synthesis Thirty.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <color>R</color>
+      <manacost>WBR</manacost>
+      <cmc>3</cmc>
+      <type>Legendary Creature — Knight</type>
+      <pt>4/3</pt>
+      <tablerow>1</tablerow>
+      <text>If Alice Synthesis Thirty is equipped, gain buff </text>
+    </card>
+    <card>
+      <name>Agil, Shop Owner</name>
+      <set picURL="/Agil, Shop Owner.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <manacost>3BW</manacost>
+      <cmc>5</cmc>
+      <type>Legendary Creature — Merchant</type>
+      <pt>1/3</pt>
+      <tablerow>1</tablerow>
+      <text>Attacking creatures you control have first strike
+Blocking creature you control have deathtouch </text>
+    </card>
+    <card>
+      <name>Lisbeth</name>
+      <set picURL="/Lisbeth.jpg">SAO</set>
+      <color>W</color>
+      <color>R</color>
+      <manacost>1WR</manacost>
+      <cmc>3</cmc>
+      <type>Legendary Creature — Blacksmith</type>
+      <pt>2/2</pt>
+      <tablerow>2</tablerow>
+      <text>Creatures you control have double strike
+When Lisbeth enters the battlefield you may search you library for an equipment and attach it to a creature other than Lisbeth </text>
+    </card>
+    <card>
+      <name>A VILLAINS</name>
+      <set picURL="/A VILLAINS.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Creature</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Nicholas, The Renegade</name>
+      <set picURL="/Nicholas, The Renegade.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <color>R</color>
+      <manacost>2BWR</manacost>
+      <cmc>5</cmc>
+      <type>Legendary Snow Creature — Rogue</type>
+      <pt>3/4</pt>
+      <tablerow>1</tablerow>
+      <text>When Nicholas, The Renegade attacks, create a Treasure token.
+When Nicholas, The Renegade dies, you may search your library and/or graveyard for a card named Divine Stone of Returning Soul, reveal it and put it into your hand. If you search your library this way, shuffle your it.</text>
+    </card>
+    <card>
+      <name>King Oberon</name>
+      <set picURL="/King Oberon.jpg">SAO</set>
+      <color>B</color>
+      <color>R</color>
+      <manacost>2BR</manacost>
+      <cmc>4</cmc>
+      <type>Legendary Creature — Faerie Noble</type>
+      <pt>2/3</pt>
+      <tablerow>2</tablerow>
+      <text>Flying
+Creatures you control get +1/+1, all others get -1/-1 . </text>
+    </card>
+    <card>
+      <name>Illfang, Kobold Lord</name>
+      <set picURL="/Illfang, Kobold Lord.jpg">SAO</set>
+      <color>B</color>
+      <color>R</color>
+      <manacost>2BR</manacost>
+      <cmc>4</cmc>
+      <type>Legendary Creature — Kobold Noble</type>
+      <pt>2/4</pt>
+      <tablerow>1</tablerow>
+      <text>If you life is less than a quarter from your initial life total, Illfang, Kobold Lord gains first strike, deathtouch and menace.
+When Illfang, Kobold Lord attacks, create a Ruin Kobold Sentinel token. </text>
+    </card>
+    <card>
+      <name>Heathcliff, The Paladin</name>
+      <set picURL="/Heathcliff, The Paladin.jpg">SAO</set>
+      <color>W</color>
+      <color>R</color>
+      <manacost>3WR</manacost>
+      <cmc>5</cmc>
+      <type>Legendary Creature — Human Knight</type>
+      <pt>4/5</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>The guy that attacks kirito</name>
+      <set picURL="/The guy that attacks kirito.jpg">SAO</set>
+      <color>B</color>
+      <manacost>B</manacost>
+      <cmc>1</cmc>
+      <type>Creature — Human Warrior</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text>son of a bitch </text>
+    </card>
+    <card>
+      <name>A OTHERS</name>
+      <set picURL="/A OTHERS.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Creature</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Ruin Kobold Sentinel</name>
+      <set picURL="/Ruin Kobold Sentinel.jpg">SAO</set>
+      <color>R</color>
+      <manacost>1R</manacost>
+      <cmc>2</cmc>
+      <type>Token Creature — Kobold Knight</type>
+      <pt>1/2</pt>
+      <token>1</token>
+      <tablerow>1</tablerow>
+      <text>Ruin Kobold Sentinel must be blocked if able. </text>
+    </card>
+    <card>
+      <name>Friendly Faerie</name>
+      <set picURL="/Friendly Faerie.jpg">SAO</set>
+      <color>W</color>
+      <manacost>1W</manacost>
+      <cmc>2</cmc>
+      <type>Creature — Faerie</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text>Flash, flying
+
+When Friendly Faerie enters the battlefield regenerate target creature. </text>
+    </card>
+    <card>
+      <name>Kibaou, Beater Hater</name>
+      <set picURL="/Kibaou, Beater Hater.jpg">SAO</set>
+      <color>B</color>
+      <color>R</color>
+      <manacost>1BR</manacost>
+      <cmc>3</cmc>
+      <type>Creature — Human Warrior</type>
+      <pt>1/2</pt>
+      <tablerow>1</tablerow>
+      <text>On your upkeep, if a player attacked you after your last turn, put a +1/+1 counter on target creature you control. </text>
+    </card>
+    <card>
+      <name>Diabel, The Beater</name>
+      <set picURL="/Diabel, The Beater.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <manacost>1WB</manacost>
+      <cmc>3</cmc>
+      <type>Creature — Human Knight</type>
+      <pt>1/2</pt>
+      <tablerow>1</tablerow>
+      <text>Other Knights and Warriors you control get +1/+1.
+When Diabel, The Beater enters the battlefield, if you control six or more Knights and Warriors, destroy target creature. </text>
+    </card>
+    <card>
+      <name>A Enchantments</name>
+      <set picURL="/A Enchantments.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Creature</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Entrap The Players</name>
+      <set picURL="/Entrap The Players.jpg">SAO</set>
+      <color>W</color>
+      <manacost>3W</manacost>
+      <cmc>4</cmc>
+      <type>Enchantment</type>
+      <tablerow>1</tablerow>
+      <text>If a creature would die, exile it instead. </text>
+    </card>
+    <card>
+      <name>A Instant/Sorceries</name>
+      <set picURL="/A Instant/Sorceries.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Creature</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Treasure Chest Trap</name>
+      <set picURL="/Treasure Chest Trap.jpg">SAO</set>
+      <color>B</color>
+      <color>R</color>
+      <manacost>BBBRRR</manacost>
+      <cmc>6</cmc>
+      <type>Instant — Trap</type>
+      <tablerow>1</tablerow>
+      <text>If an opponent added mana without using a land this turn, you may pay {B}{B}{R}{R} rather than pay Treasure Chest Trap mana cost.
+Destroy all creatures that attacked this turn.</text>
+    </card>
+    <card>
+      <name>Death Gun Spell</name>
+      <set picURL="/Death Gun Spell.jpg">SAO</set>
+      <color>B</color>
+      <manacost>BB</manacost>
+      <cmc>2</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text>Destroy target legendary creature </text>
+    </card>
+    <card>
+      <name>Practice on the Boar</name>
+      <set picURL="/Practice on the Boar.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <color>R</color>
+      <manacost>WBR</manacost>
+      <cmc>3</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Link Start</name>
+      <set picURL="/Link Start.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <color>R</color>
+      <manacost>WBR</manacost>
+      <cmc>3</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>No Way Out</name>
+      <set picURL="/No Way Out.jpg">SAO</set>
+      <color>W</color>
+      <manacost>W</manacost>
+      <cmc>1</cmc>
+      <type>Instant</type>
+      <tablerow>1</tablerow>
+      <text>Target creature doesn't leave the battlefield this turn. </text>
+    </card>
+    <card>
+      <name>Bullet of Bullets</name>
+      <set picURL="/Bullet of Bullets.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <manacost>BBWW</manacost>
+      <cmc>4</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text>Exile all creatures with power less than X, where X is the greatest power amongst all creatures. </text>
+    </card>
+    <card>
+      <name>Beat the Beater</name>
+      <set picURL="/Beat the Beater.jpg">SAO</set>
+      <color>R</color>
+      <manacost>RR</manacost>
+      <cmc>2</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text>Deal 5 damage to target creature that entered the battlefield before your last turn. </text>
+    </card>
+    <card>
+      <name>Get a Lead</name>
+      <set picURL="/Get a Lead.jpg">SAO</set>
+      <color>W</color>
+      <manacost>1W</manacost>
+      <cmc>2</cmc>
+      <type>Instant</type>
+      <tablerow>1</tablerow>
+      <text>Attacking creatures you control gain first strike until the end of the turn. </text>
+    </card>
+    <card>
+      <name>Duality of Worlds</name>
+      <set picURL="/Duality of Worlds.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <manacost>1BW</manacost>
+      <cmc>3</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text>Create a copy of target Human creature, except it's also a Knight. </text>
+    </card>
+    <card>
+      <name>Switch</name>
+      <set picURL="/Switch.jpg">SAO</set>
+      <color>B</color>
+      <color>R</color>
+      <manacost>R/BR/BR/BR/B</manacost>
+      <cmc>4</cmc>
+      <type>Instant</type>
+      <tablerow>1</tablerow>
+      <text>Return target attacking creature you control to your hand.
+Put target creature from your hand tapped and attacking. Return it to your hand on your end step. </text>
+    </card>
+    <card>
+      <name>Battle Partners</name>
+      <set picURL="/Battle Partners.jpg">SAO</set>
+      <color>W</color>
+      <color>R</color>
+      <manacost>RW</manacost>
+      <cmc>2</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text>Does something with 2 creatures. </text>
+    </card>
+    <card>
+      <name>Take a Day Off</name>
+      <set picURL="/Take a Day Off.jpg">SAO</set>
+      <color>W</color>
+      <color>B</color>
+      <manacost>BW</manacost>
+      <cmc>2</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Oversee Everything</name>
+      <set picURL="/Oversee Everything.jpg">SAO</set>
+      <color>B</color>
+      <manacost>B</manacost>
+      <cmc>1</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Artifacts</name>
+      <set picURL="/Artifacts.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Creature</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Divine Stone of Returning Soul</name>
+      <set picURL="/Divine Stone of Returning Soul.jpg">SAO</set>
+      <manacost>0</manacost>
+      <cmc>0</cmc>
+      <type>Artifact</type>
+      <tablerow>1</tablerow>
+      <text>{T}, Exile Divine Stone of Returning Soul: Regenerate target creature. </text>
+    </card>
+    <card>
+      <name>A Lands</name>
+      <set picURL="/A Lands.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Creature</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>World Tree</name>
+      <set picURL="/World Tree.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Legendary Land</type>
+      <tablerow>1</tablerow>
+      <text>World Tree enter the battlefield tapped.
+{T}: Add two of any color a land you control could produce. </text>
+    </card>
+    <card>
+      <name>Island</name>
+      <set picURL="/Island.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Basic Land — Island</type>
+      <tablerow>1</tablerow>
+      <text>{T}: Add {U}. </text>
+    </card>
+    <card>
+      <name>Plains</name>
+      <set picURL="/Plains.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Basic Land — Plains</type>
+      <tablerow>1</tablerow>
+      <text>{T}: Add {W}. </text>
+    </card>
+    <card>
+      <name>SBC Glocken</name>
+      <set picURL="/SBC Glocken.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Legendary Land</type>
+      <tablerow>1</tablerow>
+      <text>SBC Glocken enters the battlefield tapped.
+{T}: Add two mana of any color that a land an opponent controls could produce. </text>
+      <cipt>1</cipt>
+    </card>
+    <card>
+      <name>Aincrad</name>
+      <set picURL="/Aincrad.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Legendary Land</type>
+      <tablerow>1</tablerow>
+      <text>If you didn't attack this turn, Aincrad enter the battlefield tapped.
+{T}: Add two mana of any color.</text>
+    </card>
+    <card>
+      <name>Underworld</name>
+      <set picURL="/Underworld.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Legendary Land</type>
+      <tablerow>1</tablerow>
+      <text>If you don't control you commander, Underworld enters the battlefield tapped.
+{T}: Add two many of any color. </text>
+      <cipt>1</cipt>
+    </card>
+    <card>
+      <name>Idk yet</name>
+      <set picURL="/Idk yet.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Sorcery</type>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>EXTRAS</name>
+      <set picURL="/EXTRAS.jpg">SAO</set>
+      <manacost></manacost>
+      <cmc>0</cmc>
+      <type>Creature</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>Suguha</name>
+      <set picURL="/Suguha.jpg">SAO</set>
+      <color>W</color>
+      <color>G</color>
+      <manacost>GW</manacost>
+      <cmc>2</cmc>
+      <type>Legendary Creature — Faerie Warrior</type>
+      <pt>1/1</pt>
+      <tablerow>1</tablerow>
+      <text></text>
+    </card>
+    <card>
+      <name>The Blackwyrm Coat</name>
+      <set picURL="/The Blackwyrm Coat.jpg">SAO</set>
+      <color>B</color>
+      <manacost>BBB</manacost>
+      <cmc>3</cmc>
+      <type>Artifact — Equipment</type>
+      <tablerow>1</tablerow>
+      <text>Equipped creature looks cool.
+Equip {0}. </text>
+    </card>
+    <card>
+      <name>Silica, Beast Tamer</name>
+      <set picURL="/Silica, Beast Tamer.jpg">SAO</set>
+      <color>G</color>
+      <manacost>G</manacost>
+      <cmc>1</cmc>
+      <type>Legendary Creature — Human Warrior</type>
+      <pt>1/3</pt>
+      <tablerow>1</tablerow>
+      <text>If Silica, Beast Tamer would die, you may sacrifice a Beast instead.
+{G}: Regenerate target Beast.</text>
+    </card>
+  </cards>
+</cockatrice_carddatabase>

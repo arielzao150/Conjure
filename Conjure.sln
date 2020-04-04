@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conjure", "Conjure\Conjure.csproj", "{01C2DAB3-6946-4985-AEE0-A6B90911432A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01C2DAB3-6946-4985-AEE0-A6B90911432A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C2DAB3-6946-4985-AEE0-A6B90911432A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C2DAB3-6946-4985-AEE0-A6B90911432A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C2DAB3-6946-4985-AEE0-A6B90911432A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5582DEA-89F6-4456-AE8C-ABEE6CE24C72}
+	EndGlobalSection
+EndGlobal
