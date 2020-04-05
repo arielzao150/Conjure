@@ -28,13 +28,15 @@ namespace Conjure
                 }
             }
 
-            Console.WriteLine("Conjuring...")
+            Console.WriteLine("Conjuring...");
 
             // Open .xml
-            var XMLDeck = LoadXML(set);
+            
 
             try
             {
+                var XMLDeck = LoadXML(set);
+
                 var deck = new Deck(XMLDeck, set, key);
 
                 using (StreamWriter file = File.CreateText(@$".\{set}.json"))
