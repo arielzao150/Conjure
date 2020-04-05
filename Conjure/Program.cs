@@ -28,16 +28,28 @@ namespace Conjure
                 }
             }
 
+            Console.WriteLine("Conjuring...")
+
             // Open .xml
             var XMLDeck = LoadXML(set);
 
-            var deck = new Deck(XMLDeck, set, key);
-
-            using (StreamWriter file = File.CreateText(@$".\{set}.json"))
+            try
             {
-                JsonSerializer serializer = new JsonSerializer();
-                //serialize object directly into file stream
-                serializer.Serialize(file, new { ObjectStates = new[] { deck } });
+                var deck = new Deck(XMLDeck, set, key);
+
+                using (StreamWriter file = File.CreateText(@$".\{set}.json"))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    //serialize object directly into file stream
+                    serializer.Serialize(file, new { ObjectStates = new[] { deck } });
+                }
+
+                Console.WriteLine("Conjure resolves.");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Conjure was countered!");
+                Console.WriteLine("Cause: " + e.Message);
             }
         }
 

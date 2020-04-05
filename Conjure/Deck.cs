@@ -31,6 +31,7 @@ namespace Conjure
             foreach (var card in XMLCards)
             {
                 int cardNum = ContainedObjects.Count + 1;
+                Console.WriteLine(cardNum+"/"+XMLCards.Count+" "+"Now adding: " + card.name);
                 var cardToAdd = new Card();
                 cardToAdd.CardID = cardNum * 100;
                 cardToAdd.Nickname = card.name;
@@ -44,7 +45,7 @@ namespace Conjure
                 // Verify if cardback is different
                 if (File.Exists(set+"/cardback.jpg") || cardback.Length >= 1)
                 {
-                    cardImage.BackURL = cardback == "" ? UploadImageAsync(set+"/carback.jpg", key).Result : cardback;
+                    cardImage.BackURL = cardback == "" ? UploadImageAsync(set+"/cardback.jpg", key).Result : cardback;
                     cardback = cardImage.BackURL;
                 }
                 
@@ -70,8 +71,6 @@ namespace Conjure
                 return responseJson.data.url;
             }
             else throw new Exception("Not able to upload image");
-
-            return imagePath;
         }
 
 
