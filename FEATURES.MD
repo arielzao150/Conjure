@@ -9,3 +9,4 @@
  - Don't upload same image twice.
  - Create Draft package of released set
  - Create Sealed package of released set
+ - Add support to Android:Netrunner
