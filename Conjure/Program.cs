@@ -2,11 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Text;
 using System.Xml;
-using System.Xml.Serialization;
 
 namespace Conjure
 {
@@ -14,41 +11,83 @@ namespace Conjure
     {
         static void Main(string[] args)
         {
-            string set = "";
-            string key = "";
+            string setName = "Conjure";
+            string apiKey = "";
+            string mode = "";
             for (int i = 0; i < args.Length; i++)
             {
                 if (args[i] == "-set")
                 {
-                    set = args[i + 1];
+                    setName = args[i + 1];
                 }
                 else if (args[i] == "-key")
                 {
-                    key = args[i + 1];
+                    apiKey = args[i + 1];
+                }
+                else if (args[i] == "-mode")
+                {
+                    mode = args[i + 1];
                 }
             }
+            switch(mode)
+            {
+                // Custom Cards Deck
+                default:
+                case "":
+                case "1":
+                    LoadCustomDeck(setName, apiKey);
+                    break;
 
-            Console.WriteLine("Conjuring...");
+                // Official Cards Deck
+                case "2":
+                    LoadOfficialDeck(setName);
+                    break;
+            }
+        }
 
-            // Open .xml
-            
+        private static void LoadOfficialDeck(string set)
+        {
+            Console.WriteLine("Conjuring Official Deck...");
+            try
+            {
+                // Load .txt.
+#if RELEASE
+                string[] lines = File.ReadAllLines(set + ".txt");
+                var sideboard = lines.SkipWhile(x => !x.Contains("Sideboard")).ToList();
+                var mainboard = lines.Take(lines.Length - 1 - sideboard.Count).ToList();
 
+                var cards = new List<Card>(mainboard.Select(x => new Card(x.Substring(2))));
+#endif
+#if DEBUG
+                var cards = new List<Card>() { new Card("Hadana's Climb") };
+#endif
+
+
+                var officialDeck = new Deck(cards);
+
+                WriteToJsonFile(set, officialDeck);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Conjure was countered!");
+                Console.WriteLine("Cause: " + e.Message);
+            }
+}
+
+        private static void LoadCustomDeck(string set, string key)
+        {
+            Console.WriteLine("Conjuring Custom Deck...");
             try
             {
                 var XMLDeck = LoadXML(set);
 
                 var deck = new Deck(XMLDeck, set, key);
 
-                using (StreamWriter file = File.CreateText(@$".\{set}.json"))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    //serialize object directly into file stream
-                    serializer.Serialize(file, new { ObjectStates = new[] { deck } });
-                }
+                WriteToJsonFile(set, deck);
 
                 Console.WriteLine("Conjure resolves.");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Conjure was countered!");
                 Console.WriteLine("Cause: " + e.Message);
@@ -69,5 +108,16 @@ namespace Conjure
             }
             return XMLDeck;
         }
+
+        private static void WriteToJsonFile(string set, Deck deck)
+        {
+            using (StreamWriter file = File.CreateText(@$".\{set}.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                //serialize object directly into file stream
+                serializer.Serialize(file, new { ObjectStates = new[] { deck } });
+            }
+        }
     }
 }
+

@@ -21,5 +21,16 @@ namespace Conjure
             scaleY = 1,
             scaleZ = 1
         };
+
+        public Card()
+        {
+
+        }
+
+        public Card(string nickname)
+        {
+            Name = nickname;
+            Nickname = nickname;
+        }
     }
 }
