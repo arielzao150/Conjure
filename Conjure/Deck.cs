@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace Conjure
         public string Name = "DeckCustom";
         public List<Card> ContainedObjects = new List<Card>();
         public List<int> DeckIDs = new List<int>();
-        public Dictionary<int, DeckImages> CustomDeck = new Dictionary<int, DeckImages>();
+        public Dictionary<int, DeckImage> CustomDeck = new Dictionary<int, DeckImage>();
         public object Transform = new {
             posX = 0,
             posY = 1,
@@ -25,6 +26,57 @@ namespace Conjure
             scaleZ = 1
         };
 
+        public Deck(List<Card> cards)
+        {
+            foreach(var card in cards)
+            {
+                int cardNum = ContainedObjects.Count + 1;
+                Console.WriteLine(cardNum + "/" + cards.Count + " " + "Now adding: " + card.Name);
+                var cardToAdd = new Card();
+                cardToAdd.CardID = cardNum * 100;
+                cardToAdd.Nickname = card.Name;
+                ContainedObjects.Add(cardToAdd);
+
+                DeckIDs.Add(cardToAdd.CardID);
+
+                var cardImage = GetFromScryfall(card.Nickname);
+
+                CustomDeck.Add(cardNum, cardImage);
+            }
+        }
+
+        private DeckImage GetFromScryfall(string cardNickname)
+        {
+            string url = "https://api.scryfall.com";
+            url = url + $"/cards/named?exact=" + cardNickname.ToLower().Replace(" ", "+");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    using (var reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var faceURL = "";
+                        var objText = reader.ReadToEnd();
+                        ScryfallJSONResponse myojb = JsonConvert.DeserializeObject<ScryfallJSONResponse>(objText);
+                        if (myojb.image_uris != null)
+                            faceURL = myojb.image_uris["png"];
+                        else
+                        {
+                            faceURL = myojb.card_faces[0].image_uris["png"].Split('?')[0];
+                        }
+                        return new DeckImage(faceURL);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+            
         public Deck(List<CardXML> XMLCards, string set, string key)
         {
             string cardback = "";
@@ -39,7 +91,7 @@ namespace Conjure
 
                 DeckIDs.Add(cardToAdd.CardID);
 
-                var cardImage = new DeckImages();
+                var cardImage = new DeckImage();
                 cardImage.FaceURL = UploadImageAsync(set+'/'+card.picURL, key).Result;
                 
                 // Verify if cardback is different
@@ -53,21 +105,19 @@ namespace Conjure
             }
         }
 
-        public async Task<string> UploadImageAsync(string imagePath, string key)
+        private async Task<string> UploadImageAsync(string imagePath, string key)
         {
-            //return imagePath;
-            HttpClient client = new HttpClient();
-
+            using var client = new HttpClient();
             var byteArrayContent = new StringContent(Convert.ToBase64String(GetFileByteArray(imagePath)));
             var content = new MultipartFormDataContent();
             content.Add(byteArrayContent, "image");
 
-            var response = await client.PostAsync("https://api.imgbb.com/1/upload?key="+ key, content);
+            var response = await client.PostAsync("https://api.imgbb.com/1/upload?key=" + key, content);
 
             if (response.IsSuccessStatusCode)
             {
                 var responseString = await response.Content.ReadAsStringAsync();
-                var responseJson = JsonConvert.DeserializeObject<JSONResponse>(responseString);
+                var responseJson = JsonConvert.DeserializeObject<ImgbbUploadJSONResponse>(responseString);
                 return responseJson.data.url;
             }
             else throw new Exception("Not able to upload image");
