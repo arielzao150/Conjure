@@ -51,21 +51,47 @@ namespace Conjure
             try
             {
                 // Load .txt.
-#if RELEASE
                 string[] lines = File.ReadAllLines(set + ".txt");
                 var sideboard = lines.SkipWhile(x => !x.Contains("Sideboard")).ToList();
-                var mainboard = lines.Take(lines.Length - 1 - sideboard.Count).ToList();
+                var mainboard = sideboard.Count>0 ? lines.Take(lines.Length - 1 - sideboard.Count).ToList()
+                    : lines.ToList();
+                
+                var mainboardCards = new List<Card>(mainboard.Where(x => !string.IsNullOrEmpty(x))
+                    .Select(x => new Card(x)));
 
-                var cards = new List<Card>(mainboard.Select(x => new Card(x.Substring(2))));
-#endif
+                if(sideboard.Count>0) sideboard.RemoveAt(0);
+                var sideboardCards = new List<Card>(sideboard.Where(x => !string.IsNullOrEmpty(x))
+                        .Select(x => new Card(x)));
+
+                bool hasSideboard = false;
+
+                if (sideboardCards.Count >= 1)
+                {
+                    hasSideboard = true;
+                    if (sideboardCards.Count == 1 && sideboardCards[0].quantity == 1)
+                    {
+                        Console.WriteLine("Sideboard contains only 1 card, adding to mainboard");
+                        mainboardCards.Add(sideboardCards[0]);
+                        hasSideboard = false;
+                    }
+                }
+
 #if DEBUG
-                var cards = new List<Card>() { new Card("Hadana's Climb") };
+                //var cards = new List<Card>();
+                //cards.Add(new Card("Elbrus, the Binding Blade"));
+                //cards.Add(new Card("Elbrus, the Binding Blade"));
 #endif
 
-
-                var officialDeck = new Deck(cards);
-
-                WriteToJsonFile(set, officialDeck);
+                Console.WriteLine("Conjuring Mainboard...");
+                var officialDeck = new Deck(mainboardCards);
+                if(hasSideboard)
+                {
+                    Console.WriteLine("Conjuring Sideboard...");
+                    var sideboardDeck = new Deck(sideboardCards);
+                    
+                    WriteToJsonFile(set, officialDeck, sideboardDeck);
+                }
+                else WriteToJsonFile(set, officialDeck);
             }
             catch (Exception e)
             {
@@ -109,13 +135,31 @@ namespace Conjure
             return XMLDeck;
         }
 
-        private static void WriteToJsonFile(string set, Deck deck)
+        private static void WriteToJsonFile(string set, params Deck[] ObjectStates)
         {
+            int i = 0;
+            foreach(var deck in ObjectStates)
+            {
+                deck.Transform = new
+                {
+                    posX = 1 + i,
+                    posY = 0,
+                    posZ = 0,
+                    rotX = 0,
+                    rotY = 180,
+                    rotZ = 180,
+                    scaleX = 1,
+                    scaleY = 1,
+                    scaleZ = 1
+                };
+                i += 2;
+            }
+
             using (StreamWriter file = File.CreateText(@$".\{set}.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 //serialize object directly into file stream
-                serializer.Serialize(file, new { ObjectStates = new[] { deck } });
+                serializer.Serialize(file, new { ObjectStates });
             }
         }
     }

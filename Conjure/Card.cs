@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Conjure
@@ -12,7 +13,7 @@ namespace Conjure
         public object Transform = new
         {
             posX = 0,
-            posY = 1,
+            posY = 0,
             posZ = 0,
             rotX = 0,
             rotY = 180,
@@ -27,10 +28,24 @@ namespace Conjure
 
         }
 
-        public Card(string nickname)
+        public Card(string fileLine)
         {
-            Name = nickname;
-            Nickname = nickname;
+            var qnt = fileLine.Trim(' ')[0].ToString();
+            quantity = Convert.ToInt32(qnt);
+            var name = fileLine.Substring(fileLine.IndexOf(' ') + 1);
+            Nickname = name;
         }
+
+        public Card(int id, string name)
+        {
+            CardID = id;
+            Nickname = name;
+        }
+
+        [NonSerialized]
+        public int quantity = 1;
+
+        [NonSerialized]
+        public List<Card> tokens = null;
     }
 }

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="command-build.txt" />
     <None Remove="SAO.zip" />
   </ItemGroup>
 

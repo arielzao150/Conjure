@@ -21,5 +21,10 @@ namespace Conjure
         {
             FaceURL = faceURL;
         }
+        public DeckImage(string faceURL, string backURL)
+        {
+            FaceURL = faceURL;
+            BackURL = backURL;
+        }
     }
 }

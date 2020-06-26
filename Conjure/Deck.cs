@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,9 +15,10 @@ namespace Conjure
         public List<Card> ContainedObjects = new List<Card>();
         public List<int> DeckIDs = new List<int>();
         public Dictionary<int, DeckImage> CustomDeck = new Dictionary<int, DeckImage>();
-        public object Transform = new {
+        public object Transform = new
+        {
             posX = 0,
-            posY = 1,
+            posY = 0,
             posZ = 0,
             rotX = 0,
             rotY = 180,
@@ -28,62 +30,71 @@ namespace Conjure
 
         public Deck(List<Card> cards)
         {
-            foreach(var card in cards)
+            var cardTotal = cards.Sum(x => x.quantity);
+            string imgQuality = "png";
+            foreach (var card in cards)
             {
-                int cardNum = ContainedObjects.Count + 1;
-                Console.WriteLine(cardNum + "/" + cards.Count + " " + "Now adding: " + card.Name);
-                var cardToAdd = new Card();
-                cardToAdd.CardID = cardNum * 100;
-                cardToAdd.Nickname = card.Name;
-                ContainedObjects.Add(cardToAdd);
+                while (card.quantity >= 1)
+                {
+                    card.quantity--;
+                    int cardNum = ContainedObjects.Count + 1;
+                    Console.WriteLine(cardNum + "/" + cardTotal + " " + "Now adding: " + card.Nickname);
+                    var cardToAdd = new Card(cardNum * 100, card.Nickname);
 
-                DeckIDs.Add(cardToAdd.CardID);
+                    ScryfallJSONResponse cardFromScryfall = GetFromScryfall(card.Nickname);
 
-                var cardImage = GetFromScryfall(card.Nickname);
+                    if (cardFromScryfall.image_uris == null)
+                    {
+                        Console.WriteLine($"{cardToAdd.Nickname} is double faced, adding another card to list.");
+                        cardTotal++;
+                        var faceURL = cardFromScryfall.card_faces[0].image_uris[imgQuality];
+                        var backURL = cardFromScryfall.card_faces[1].image_uris[imgQuality];
+                        AddCardAndImage(cardToAdd, new DeckImage(faceURL));
 
-                CustomDeck.Add(cardNum, cardImage);
+                        
+                        cardNum++;
+                        Console.WriteLine(cardNum + "/" + cardTotal + " " + "Now adding: " + cardFromScryfall.card_faces[1].name);
+                        cardToAdd = new Card(cardNum * 100, cardFromScryfall.card_faces[1].name);
+                        AddCardAndImage(cardToAdd, new DeckImage(backURL, faceURL));
+                        continue;
+                    }
+
+                    AddCardAndImage(cardToAdd, new DeckImage(cardFromScryfall.image_uris[imgQuality]));
+                }
             }
         }
 
-        private DeckImage GetFromScryfall(string cardNickname)
+        private void AddCardAndImage(Card cardToAdd, DeckImage image)
+        {
+            ContainedObjects.Add(cardToAdd);
+            DeckIDs.Add(cardToAdd.CardID);
+            CustomDeck.Add(cardToAdd.CardID/100, image);
+        }
+
+        private ScryfallJSONResponse GetFromScryfall(string cardNickname)
         {
             string url = "https://api.scryfall.com";
             url = url + $"/cards/named?exact=" + cardNickname.ToLower().Replace(" ", "+");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-            try
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (var reader = new StreamReader(response.GetResponseStream()))
                 {
-                    using (var reader = new StreamReader(response.GetResponseStream()))
-                    {
-                        var faceURL = "";
-                        var objText = reader.ReadToEnd();
-                        ScryfallJSONResponse myojb = JsonConvert.DeserializeObject<ScryfallJSONResponse>(objText);
-                        if (myojb.image_uris != null)
-                            faceURL = myojb.image_uris["png"];
-                        else
-                        {
-                            faceURL = myojb.card_faces[0].image_uris["png"].Split('?')[0];
-                        }
-                        return new DeckImage(faceURL);
-                    }
+                    var objText = reader.ReadToEnd();
+                    ScryfallJSONResponse myojb = JsonConvert.DeserializeObject<ScryfallJSONResponse>(objText);
+                    return myojb;
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return null;
-            }
         }
-            
+
         public Deck(List<CardXML> XMLCards, string set, string key)
         {
             string cardback = "";
             foreach (var card in XMLCards)
             {
                 int cardNum = ContainedObjects.Count + 1;
-                Console.WriteLine(cardNum+"/"+XMLCards.Count+" "+"Now adding: " + card.name);
+                Console.WriteLine(cardNum + "/" + XMLCards.Count + " " + "Now adding: " + card.name);
                 var cardToAdd = new Card();
                 cardToAdd.CardID = cardNum * 100;
                 cardToAdd.Nickname = card.name;
@@ -92,15 +103,15 @@ namespace Conjure
                 DeckIDs.Add(cardToAdd.CardID);
 
                 var cardImage = new DeckImage();
-                cardImage.FaceURL = UploadImageAsync(set+'/'+card.picURL, key).Result;
-                
+                cardImage.FaceURL = UploadImageAsync(set + '/' + card.picURL, key).Result;
+
                 // Verify if cardback is different
-                if (File.Exists(set+"/cardback.jpg") || cardback.Length >= 1)
+                if (File.Exists(set + "/cardback.jpg") || cardback.Length >= 1)
                 {
-                    cardImage.BackURL = cardback == "" ? UploadImageAsync(set+"/cardback.jpg", key).Result : cardback;
+                    cardImage.BackURL = cardback == "" ? UploadImageAsync(set + "/cardback.jpg", key).Result : cardback;
                     cardback = cardImage.BackURL;
                 }
-                
+
                 CustomDeck.Add(cardNum, cardImage);
             }
         }
